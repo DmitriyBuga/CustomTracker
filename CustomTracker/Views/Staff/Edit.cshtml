@@ -1,0 +1,53 @@
+﻿@model CustomTracker.Models.Tickets
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit","Staff",FormMethod.Post,new { @class = "well span8" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+        
+            @Html.HiddenFor(model => model.Id)
+            <label style="width:100px;">Department</label>
+            
+            @Html.DropDownListFor(model => model.Departments.Id, Model.listDepartment as SelectList, new {style="width:200px" })
+            @Html.ValidationMessageFor(model => model.Departments.Id, "", new { @class = "text-danger" })
+            <br>
+            <label style="width:100px;">Owner</label>
+            @Html.DropDownListFor(model => model.Users.Id, Model.listUser as SelectList, new { style = "width:200px" })
+            @Html.ValidationMessageFor(model => model.Users.Id, "", new { @class = "text-danger" })
+            <br>
+            <label style="width:100px;">Status</label>
+            @Html.DropDownListFor(model => model.Statuses.Id, Model.listStatus as SelectList, new { style = "width:200px" })
+            @Html.ValidationMessageFor(model => model.Statuses.Id, "", new { @class = "text-danger" })
+            <br>
+            <label  style="width:100px;">Email</label>  
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <br>
+            <label  style="width:100px;">Subject</label>
+            @Html.EditorFor(model => model.Subject)
+            @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+            <br>
+            <label  style="width:100px;">Reference</label>
+            @Html.EditorFor(model => model.Reference)
+            @Html.ValidationMessageFor(model => model.Reference, "", new { @class = "text-danger" })
+            <br>
+            <label style="width:100px;">Body</Label>
+            @Html.TextAreaFor(model => model.Body, 5, 50, null)
+            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+            <br>
+            <label  style="width:100px;">Responce</label>
+            @Html.TextAreaFor(model => model.Responce, 5, 50, null)
+            @Html.ValidationMessageFor(model => model.Responce, "", new { @class = "text-danger" })
+        
+            @Html.CheckBoxFor(model=>model.SendResponce, new { @class = "checkbox"})
+            
+                    
+                    <input type="submit" value="Save" class="btn btn-primary pull-left" />
+
+                    @Html.ActionLink("Back to List", "ViewTickets","Staff", new { @class = "btn btn - primary pull - right" })
+}
+

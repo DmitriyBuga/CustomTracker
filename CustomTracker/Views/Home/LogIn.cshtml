@@ -1,0 +1,44 @@
+﻿@model CustomTracker.Models.LogOnModel
+
+@{
+    ViewBag.Title = "Input login and password";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 style="margin-left:10px;">Input login and password</h4>
+<hr /> 
+<div styles="float:left;">
+    @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form",@style = "margin-left:10px;" }))
+    {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                    <p>
+                        Login
+                    </p>
+                    <p> 
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @style="width:200px;" })
+                    </p>
+                    <p>
+                        Password
+                    </p>
+                    <p>
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                    </p>
+                    <p>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @style = "width:200px;" })
+                    </p>
+                    <p>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger"})
+                    </p>
+                <div>
+                        <input type="submit" value="Log in" class="btn btn-default" style="float:left;" />
+                </div>
+                <p></p>
+                
+            }
+    
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home", new { @class = "btn btn - default" })
+</div>
+

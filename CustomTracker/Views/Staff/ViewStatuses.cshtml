@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "ViewStatuses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div ng-controller="myCntrl" class = "well span8">
+    
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <br />
+    <p class="h4">Statuses</p>
+    <input type="button" class="btnAdd" value=" Add Status" ng-click="AddStatusDiv()" />
+    <div ng-show="divStatus">
+        <p class="divHead">{{Action}} Status</p>
+        <table>
+            <tr>
+                <td><b>Id</b></td>
+                <td>
+                    <input type="text" disabled="disabled" ng-model="statusId" />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Status Name</b></td>
+                <td>
+                    <input type="text" ng-model="statusStatus" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1">
+                    <input type="button" class="btnAdd" value="Save" ng-click="AddUpdateStatus()" />
+                    <input type="button" class="btnAdd" value="Cancel" ng-click="CloseStatusDiv()" />
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+    <div class="divList">
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>Status name</b></td>
+                <td><b>Action</b></td>
+            </tr>
+            <tr ng-repeat="status in statuses">
+                <td>
+                    {{status.Id}}
+                </td>
+                <td>
+                    {{status.Status}}
+                </td>
+                <td>
+                    <span ng-click="editStatus(status)" class = "btn-link">Edit</span>
+                    <span ng-click="deleteStatus(status)" class = "btn-link">Delete</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    
+</div>

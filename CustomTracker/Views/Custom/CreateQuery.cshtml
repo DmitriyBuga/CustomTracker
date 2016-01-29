@@ -1,0 +1,35 @@
+﻿@model CustomTracker.Models.Tickets
+
+@{
+    ViewBag.Title = "Customer query";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet">
+</head>
+
+@using (Html.BeginForm("CreateQuery", "Custom", FormMethod.Post, new { @class = "well span8" }))
+{
+    <h4>Input query</h4>
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <br>
+    <label style="width:100px;">Email</label>
+    @Html.EditorFor(model => model.Email)
+    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    <br>
+    <label style="width:100px;">Subject</label>
+    @Html.EditorFor(model => model.Subject)
+    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+    <br>
+    <label style="width:100px;">Body</label>
+    @Html.TextAreaFor(model => model.Body, 5, 50, null)
+    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+    <br>
+    <label style="width:100px;">Department</label>
+    @Html.DropDownListFor(model => model.Departments.Id, Model.listDepartment as SelectList, new { style = "width:200px" })
+    @Html.ValidationMessageFor(model => model.Departments.Id, "", new { @class = "text-danger" })
+    <br>
+    <input type="submit" value="Send" class="btn btn-primary pull-left" />
+    <br>   
+}

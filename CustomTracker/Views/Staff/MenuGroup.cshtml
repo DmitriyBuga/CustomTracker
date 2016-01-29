@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+<head>
+    <style>
+        .active {
+            background-color:black;
+        }
+    </style>
+</head>
+
+<div style="float:left; width:200px;">
+    <div class="sidebar-nav">
+        <div class="well" style="width:200px; padding: 8px 0">
+            <ul class="nav nav-list">
+                <li class="@ViewBag.AllTicket">
+                    @Html.ActionLink("All tickets", "ViewTickets", "Staff", new { selectedGroup = -1 }, new { styles = "float:left;" })
+                </li>
+                <li class="@ViewBag.NewTicket"><a href="/Staff/NewTickets"><i class="icon-comment"></i> New unassigned tickets</a></li>
+                <li class="@ViewBag.OpenTicket"><a href="/Staff/OpenTickets"><i class="icon-comment"></i> Open Tickets</a></liclass="@ViewBag.OpenTicket">
+                <li class="@ViewBag.OnHoldTicket"><a href="/Staff/OnHoldTickets"><i class="icon-comment"></i> On hold tickets</a></a></li>
+                <li class="@ViewBag.CompletedTicket"><a href="/Staff/CompletedTickets"><i class="icon-comment"></i> Closed Tickets</a></a></li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </div>
+</div>

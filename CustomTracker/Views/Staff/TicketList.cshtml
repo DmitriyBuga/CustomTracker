@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CustomTracker.Models.Tickets>
+
+@{
+    Layout = "~/Views/Shared/_bugTrackerMasterPage.cshtml";
+}
+<div class="well span8">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find: @Html.TextBox("SearchReference")
+            <input type="submit" value="Search" />
+        </p>
+    }
+    <table class="table table-striped table-condensed" style="width:80%;">
+        <thead>
+            
+        
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Departments)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Users)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Statuses)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DataMail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reference)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Departments.Department)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Users.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Statuses.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataMail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reference)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id, @class = "btn btn - primary pull - right" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
